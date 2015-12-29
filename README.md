@@ -1,2 +1,38 @@
 # ICPageView
-banner图、广告位图片、自动翻页，加载本地网络图片轻松解决。
+
+##用法
+#使用和tableView使用方法类似
+
+//创建PageView
+ICPageView *pageView = [[ICPageView alloc]init];
+pageView.frame = CGRectMake(0, 20, self.view.frame.size.width, 200);
+//设置代理和数据源
+pageView.delegate = self;
+pageView.dataSource = self;
+[self.view addSubview:pageView];
+
+#代理方法
+
+#pragma mark - ICPageViewDataSource
+
+-(NSInteger)numberOfPageView
+{
+return _images.count;
+}
+
+-(id<PageViewImageItemProtocol>)imageItemForPageViewAtIndex:(NSInteger)index
+{
+return _images[index];
+}
+
+#pragma mark - ICPageViewDelegate
+-(void)pageViewDidScrollTOIndex:(NSInteger)index
+{
+NSLog(@"pageViewDidScrollTOIndex %ld",index);
+}
+
+-(void)pageViewDidTapIndex:(NSInteger)index
+{
+NSLog(@"pageViewDidTapIndex %ld",index);
+}
+
