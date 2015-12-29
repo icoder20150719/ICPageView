@@ -1,5 +1,5 @@
 # ICPageView
-![Image](https://github.com/icoder20150719/ICWebViewManager/blob/master/pageView.gif)
+![Image](https://github.com/icoder20150719/ICPageView/blob/master/pageView.gif)
 ##用法
 #使用和tableView使用方法类似
 
