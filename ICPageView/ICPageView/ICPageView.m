@@ -146,7 +146,6 @@ static NSString *CELLID = @"ID_CELL";
     
     _pageControl=pageControl;
     
-    
     [self addTimer];
 
 }
@@ -198,11 +197,11 @@ static NSString *CELLID = @"ID_CELL";
     NSIndexPath *currentIndexPathReset = [NSIndexPath indexPathForItem:currentIndexPath.item inSection:MAX_SECTION / 2];
     [self.collectionView scrollToItemAtIndexPath:currentIndexPathReset atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
     
-    NSInteger nextItem = currentIndexPathReset.item +1;
+    NSInteger nextItem = currentIndexPathReset.item + 1;
     NSInteger nextSection = currentIndexPathReset.section;
-    if (nextItem==self.numberOfPageView) {
-        nextItem=0;
-        nextSection++;
+    if (nextItem == self.numberOfPageView) {
+        nextItem = 0;
+        nextSection ++;
     }
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
     
@@ -229,11 +228,14 @@ static NSString *CELLID = @"ID_CELL";
 
 
 -(void) scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
     [self removeTimer];
+    
 }
 
 #pragma mark 当用户停止的时候调用
 -(void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
     [self addTimer];
     
 }
@@ -241,14 +243,14 @@ static NSString *CELLID = @"ID_CELL";
 
 #pragma mark 设置页码
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView{
-    int page = (int) (scrollView.contentOffset.x / scrollView.frame.size.width+0.5)%self.numberOfPageView;
+    int page = (int) (scrollView.contentOffset.x / scrollView.frame.size.width + 0.5)%self.numberOfPageView;
     self.pageControl.currentPage = page;
 }
 
 //结束拖拽
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if ([self.delegate respondsToSelector:@selector(pageViewDidScrollTOIndex:)]) {
-        [self.delegate pageViewDidScrollTOIndex:self.pageControl.currentPage];
+    if ([self.delegate respondsToSelector:@selector(pageViewDidDragToIndex:)]) {
+        [self.delegate pageViewDidDragToIndex:self.pageControl.currentPage];
     }
     
 }

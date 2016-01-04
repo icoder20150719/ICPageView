@@ -26,8 +26,9 @@
 @protocol ICPageViewDelegate <NSObject>
 
 @optional
+
 -(void)pageViewDidTapIndex:(NSInteger)index;
--(void)pageViewDidScrollTOIndex:(NSInteger)index;
+-(void)pageViewDidDragToIndex:(NSInteger)index;
 
 @end
 

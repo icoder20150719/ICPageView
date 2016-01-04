@@ -44,15 +44,16 @@
     return _images.count;
 }
 
+//反回的是个模型，模型应该遵循PageViewImageItemProtocol 你可以继承ICImageItem，成为它的子类
 -(id<PageViewImageItemProtocol>)imageItemForPageViewAtIndex:(NSInteger)index
 {
     return _images[index];
 }
 
 #pragma mark - ICPageViewDelegate
--(void)pageViewDidScrollTOIndex:(NSInteger)index
+-(void)pageViewDidDragToIndex:(NSInteger)index
 {
-    NSLog(@"pageViewDidScrollTOIndex %ld",index);
+    NSLog(@"pageViewDidDragToIndex %ld",index);
 }
 
 -(void)pageViewDidTapIndex:(NSInteger)index
